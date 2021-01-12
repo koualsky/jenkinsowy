@@ -1,17 +1,10 @@
 pipeline {
-    agent none
+    agent { docker { image 'python:3.5.1' } }
     stages {
-        stage('Build') {
-            agent {
-                docker {
-                    image 'python:3.7.9-buster'
-                }
-            }
+        stage('build') {
             steps {
-                sh 'python manage.py test'
+                sh 'python --version'
             }
         }
     }
 }
-
-
